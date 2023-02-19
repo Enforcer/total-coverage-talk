@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "total-coverage-talk"
+version = "0.0.0"
+description = ""
+authors = ["Sebastian Buczynski <nnplaya@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "3.11"
+fastapi = {extras = ["all"], version = "^0.92.0"}
+pydantic = "^1.10.5"
+SQLAlchemy = "^2.0.4"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.2.1"
+pytest-cov = "^4.0.0"
+black = "^23.1.0"
+isort = "^5.12.0"
+mypy = "^1.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
