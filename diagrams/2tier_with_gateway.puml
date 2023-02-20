@@ -1,0 +1,19 @@
+@startuml
+top to bottom direction
+skinparam backgroundcolor transparent
+
+scale 3
+
+rectangle UI
+
+rectangle "View (API)"
+rectangle Model
+rectangle Gateway
+rectangle "External System"
+
+UI -[#silver]-> "View (API)"
+"View (API)" -[#silver]-> Model
+"View (API)" -[#silver]> Gateway
+Gateway -[#silver]> "External System"
+
+@enduml

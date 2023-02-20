@@ -1,3 +1,6 @@
+from typing import Iterator
+
+import httpx
 from fastapi import Depends, FastAPI, Request, Response
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -6,6 +9,7 @@ from sqlalchemy.orm import Session
 from subscriptions import anonymization
 from subscriptions.db import Base, session_factory
 from subscriptions.models import PaymentCardDetails
+from subscriptions.payments_gateway import PaymentCardDto, PaymentsGateway
 
 app = FastAPI()
 
@@ -14,7 +18,7 @@ def user_id(request: Request) -> int:
     return int(request.headers["X-Auth-Id"])
 
 
-def session() -> Session:
+def session() -> Iterator[Session]:
     _session = session_factory()
     yield _session
     _session.close()
@@ -45,6 +49,22 @@ def store_payment_card(
     )
     session.add(payment_card)
     session.commit()
+    return Response(status_code=201)
+
+
+@app.post("/payment-cards-in-external-system")
+def store_payment_card_in_external_system(
+    payload: PaymentCardPayload,
+    user_id: int = Depends(user_id),
+    payments_gateway: PaymentsGateway = Depends(),
+) -> Response:
+    dto = PaymentCardDto(
+        user_id=user_id,
+        card_number=payload.card_number,
+        names=payload.names,
+        cvc=payload.cvc,
+    )
+    payments_gateway.store_payment_card(dto)
     return Response(status_code=201)
 
 

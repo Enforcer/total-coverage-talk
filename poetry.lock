@@ -19,7 +19,7 @@ trio = ["trio (>=0.16,<0.22)"]
 name = "attrs"
 version = "22.2.0"
 description = "Classes Without Boilerplate"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -276,6 +276,14 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "mockito"
+version = "1.4.0"
+description = "Spying framework"
+category = "dev"
+optional = false
+python-versions = ">=2.7"
+
+[[package]]
 name = "mypy"
 version = "1.0.1"
 description = "Optional static typing for Python"
@@ -396,6 +404,18 @@ pytest = ">=4.6"
 
 [package.extras]
 testing = ["fields", "hunter", "process-tests", "six", "pytest-xdist", "virtualenv"]
+
+[[package]]
+name = "pytest-mockito"
+version = "0.0.4"
+description = "Base fixtures for mockito"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+mockito = ">=1.0.6"
+pytest = ">=3"
 
 [[package]]
 name = "python-dotenv"
@@ -579,7 +599,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.11"
-content-hash = "230d1b9c7cdf2ca1346e735ed4e66282739f8f5c987d3bd239512b898e69aa40"
+content-hash = "0f24b23428b3dd37cfe0b4dac5e661af680299f62850468e622c72cd4f282112"
 
 [metadata.files]
 anyio = [
@@ -883,6 +903,10 @@ markupsafe = [
     {file = "MarkupSafe-2.1.2-cp39-cp39-win_amd64.whl", hash = "sha256:0576fe974b40a400449768941d5d0858cc624e3249dfd1e0c33674e5c7ca7aed"},
     {file = "MarkupSafe-2.1.2.tar.gz", hash = "sha256:abcabc8c2b26036d62d4c746381a6f7cf60aafcc653198ad678306986b09450d"},
 ]
+mockito = [
+    {file = "mockito-1.4.0-py3-none-any.whl", hash = "sha256:1719c6bec3523f9b465c86d247bb76027f53ab10f76b2a126dde409d0492fe3e"},
+    {file = "mockito-1.4.0.tar.gz", hash = "sha256:409ab604c9ebe1bb7dc18ec6b0ed98a8ad5127b08273f5804b22f4d1b51e5222"},
+]
 mypy = [
     {file = "mypy-1.0.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:71a808334d3f41ef011faa5a5cd8153606df5fc0b56de5b2e89566c8093a0c9a"},
     {file = "mypy-1.0.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:920169f0184215eef19294fa86ea49ffd4635dedfdea2b57e45cb4ee85d5ccaf"},
@@ -1022,6 +1046,9 @@ pytest = [
 pytest-cov = [
     {file = "pytest-cov-4.0.0.tar.gz", hash = "sha256:996b79efde6433cdbd0088872dbc5fb3ed7fe1578b68cdbba634f14bb8dd0470"},
     {file = "pytest_cov-4.0.0-py3-none-any.whl", hash = "sha256:2feb1b751d66a8bd934e5edfa2e961d11309dc37b73b0eabe73b5945fee20f6b"},
+]
+pytest-mockito = [
+    {file = "pytest-mockito-0.0.4.tar.gz", hash = "sha256:40d40cdf118127dcb1e3c9e838b0d1c11d5197a23beaf10b6e3f42f9b6cb68a9"},
 ]
 python-dotenv = [
     {file = "python-dotenv-0.21.1.tar.gz", hash = "sha256:1c93de8f636cde3ce377292818d0e440b6e45a82f215c3744979151fa8151c49"},

@@ -22,6 +22,11 @@ def client() -> TestClient:
 
 
 @pytest.fixture()
-def authorized_client(client: TestClient) -> TestClient:
-    client.headers["X-Auth-Id"] = str(next(users_ids))
+def user_id() -> int:
+    return next(users_ids)
+
+
+@pytest.fixture()
+def authorized_client(client: TestClient, user_id: int) -> TestClient:
+    client.headers["X-Auth-Id"] = str(user_id)
     return client

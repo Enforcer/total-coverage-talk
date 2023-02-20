@@ -1,0 +1,41 @@
+@startuml
+top to bottom direction
+skinparam backgroundcolor transparent
+
+scale 3
+
+rectangle UI
+
+skinparam node {
+  backgroundColor white
+}
+
+node "Component A" {
+    skinparam backgroundColor white
+    rectangle "API A"
+    rectangle Model
+    rectangle Gateway
+}
+rectangle "External System"
+
+node "Component B" {
+    skinparam backgroundColor white
+    rectangle "API B"
+    rectangle Service
+    rectangle Entity
+    rectangle Repository
+}
+
+UI -[#silver]-> "API A"
+"API A" -[#silver]-> Model
+"API A" -[#silver]l-> Gateway
+Gateway -[#silver]l-> "External System"
+
+UI -[#silver]-> "API B"
+"API B" -[#silver]-> Service
+Service -[#silver]-> Repository
+Service -[#silver]> Entity
+Repository -[#silver]> Entity
+
+
+@enduml
